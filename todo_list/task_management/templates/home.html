@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div style="width:50%; margin:auto;">
+    <h1>Welcome to Task Management Page</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button class="btn btn-primary" type="Submit">Submit</button>
+
+    </form>
+</div>
+
+{% endblock %}

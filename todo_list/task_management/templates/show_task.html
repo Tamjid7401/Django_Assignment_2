@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div style="width:70%; margin: auto;">
+    <h1>TASKS</h1>
+    {% if data %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr>
+
+                <td>{{item.taskTitle}}</td>
+                <td>{{item.taskDescription}}</td>
+                <td>Incomplete</td>
+                <td>
+                    <a href="{% url 'DeleteTask' id=item.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    <a href="{% url 'EditTask' id=item.id %}" class="btn btn-info btn-sm">Edit</a>
+                    <a href="{% url 'CompletedTask' id=item.id %}"class="btn btn-success btn-sm">Complete</a>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+    {% else %}
+    <h3>No Tasks Available</h3>
+    {% endif %}
+</div>
+
+{% endblock %}
